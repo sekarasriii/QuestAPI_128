@@ -15,8 +15,9 @@ interface ServiceApiSiswa {
     @POST("insertTM.php")
     suspend fun postSiswa(@Body dataSiswa: DataSiswa):retrofit2.Response<Void>
 
-    //@GET("baca1eman.php")
-    //suspend fun getSatuSiswa(@Query("id") id: Int): DataSiswa
+    //fungsi ambil satu data siswa (GET by ID)
+    @GET("baca1eman.php")
+    suspend fun getSatuSiswa(@Query("id") id: Int): DataSiswa
 
     //@PUT("editTM.php/{id}")
     //suspend fun editSatuSiswa(@Query("id") id: Int, @Body dataSiswa: DataSiswa):retrofit2.Response<Void>
