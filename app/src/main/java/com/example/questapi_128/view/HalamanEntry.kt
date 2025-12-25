@@ -24,6 +24,7 @@ import com.example.questapi_128.modeldata.UIStateSiswa
 import androidx.compose.foundation.R
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -139,4 +140,20 @@ fun FormTambahSiswa(
             enabled = enabled,
             singleLine = true
         )
+        if (enabled) {
+            Text(
+                text = stringResource(R.string.required_field),
+                modifier = Modifier.padding(
+                    start = dimensionResource(id = R.dimen.padding_medium)
+                )
+            )
+        }
+
+        Divider(
+            thickness = dimensionResource(R.dimen.padding_small),
+            modifier = Modifier.padding(
+                bottom = dimensionResource(id = R.dimen.padding_medium)
+            )
+        )
+    }
 }
