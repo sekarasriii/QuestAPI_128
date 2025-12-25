@@ -1,6 +1,5 @@
 package com.example.questapi_128.modeldata
 
-import com.example.questapi_128.modeldata.DetailSiswa
 import kotlinx.serialization.Serializable
 import kotlin.Int
 
@@ -29,8 +28,7 @@ fun DetailSiswa.toDataSiswa(): DataSiswa = DataSiswa(
     telpon = telpon
 )
 
-fun DataSiswa.toUiStateSiswa(isEntryValid: Boolean = false): UIStateSiswa =
-    UIStateSiswa(
+fun DataSiswa.toUiStateSiswa(isEntryValid: Boolean = false): UIStateSiswa = UIStateSiswa(
         detailSiswa = this.toDetailSiswa(),
         isEntryValid = isEntryValid
     )
