@@ -1,5 +1,7 @@
 package com.example.questapi_128.view
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -11,11 +13,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.questapi_128.modeldata.DetailSiswa
 import com.example.questapi_128.viewmodel.EntryViewModel
 import com.example.questapi_128.uicontroller.route.DestinasiEntry
 import kotlinx.coroutines.launch
+import com.example.questapi_128.modeldata.UIStateSiswa
+import androidx.compose.foundation.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -55,3 +61,24 @@ fun EntrySiswaScreen(
         )
     }
 }
+
+@Composable
+fun EntrySiswaBody(
+    uiStateSiswa: UIStateSiswa,
+    onSiswaValueChange: (DetailSiswa) -> Unit,
+    onSaveClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(
+            dimensionResource(id = R.dimen.padding_large)
+        ),
+        modifier = modifier.padding(
+            dimensionResource(id = R.dimen.padding_medium)
+        )
+    ) {
+        FormTambahSiswa(
+            detailSiswa = uiStateSiswa.detailSiswa,
+            onValueChange = onSiswaValueChange,
+            modifier = Modifier.fillMaxWidth()
+        )
