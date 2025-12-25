@@ -10,14 +10,14 @@ import com.example.questapi_128.uicontroller.route.DestinasiEntry
 import com.example.questapi_128.uicontroller.route.DestinasiHome
 import com.example.questapi_128.uicontroller.route.DestinasiDetail
 import com.example.questapi_128.view.EntrySiswaScreen
-import com.example.questapi_128.view.HomeScreen
+import com.example.api.view.HomeScreen
 
 @Composable
 fun DataSiswaApp(
     navController: NavHostController = rememberNavController(),
     modifier: Modifier
 ) {
-    com.example.questapi_128.uicontroller.HostNavigasi(navController = navController)
+    HostNavigasi(navController = navController)
 }
 
 @Composable

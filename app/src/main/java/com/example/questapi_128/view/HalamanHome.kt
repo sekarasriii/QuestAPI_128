@@ -1,4 +1,4 @@
-package com.example.questapi_128.view
+package com.example.api.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -37,6 +37,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.questapi_128.R
 import com.example.questapi_128.modeldata.DataSiswa
 import com.example.questapi_128.uicontroller.route.DestinasiHome
+import com.example.questapi_128.view.SiswaTopAppBar
 import com.example.questapi_128.viewmodel.HomeViewModel
 import com.example.questapi_128.viewmodel.provider.PenyediaViewModel
 import com.example.questapi_128.viewmodel.StatusUiSiswa
@@ -85,6 +86,7 @@ fun HomeScreen(
         )
     }
 }
+
 @Composable
 fun HomeBody(
     statusUiSiswa: StatusUiSiswa,
@@ -111,14 +113,16 @@ fun HomeBody(
         }
     }
 }
+
 @Composable
 fun LoadingScreen(modifier: Modifier = Modifier) {
     Image(
-        modifier = modifier.size(200.dp),
-        painter = painterResource(R.drawable.img),
+        modifier = modifier.size(300.dp),
+        painter = painterResource(R.drawable.myshayla),
         contentDescription = stringResource(R.string.loading)
     )
 }
+
 @Composable
 fun ErrorScreen(retryAction: () -> Unit, modifier: Modifier = Modifier) {
     Column(
@@ -135,6 +139,7 @@ fun ErrorScreen(retryAction: () -> Unit, modifier: Modifier = Modifier) {
         }
     }
 }
+
 @Composable
 fun DaftarSiswa(
     itemSiswa: List<DataSiswa>,
@@ -154,6 +159,7 @@ fun DaftarSiswa(
         }
     }
 }
+
 @Composable
 fun ItemSiswa(
     siswa: DataSiswa,
