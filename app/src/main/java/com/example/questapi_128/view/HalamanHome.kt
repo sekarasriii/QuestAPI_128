@@ -1,4 +1,4 @@
-package com.example.api.view
+package com.example.questapi_128.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -37,10 +37,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.questapi_128.R
 import com.example.questapi_128.modeldata.DataSiswa
 import com.example.questapi_128.uicontroller.route.DestinasiHome
-import com.example.questapi_128.view.SiswaTopAppBar
 import com.example.questapi_128.viewmodel.HomeViewModel
-import com.example.questapi_128.viewmodel.provider.PenyediaViewModel
 import com.example.questapi_128.viewmodel.StatusUiSiswa
+import com.example.questapi_128.viewmodel.provider.PenyediaViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -117,7 +116,7 @@ fun HomeBody(
 @Composable
 fun LoadingScreen(modifier: Modifier = Modifier) {
     Image(
-        modifier = modifier.size(300.dp),
+        modifier = modifier.size(200.dp),
         painter = painterResource(R.drawable.myshayla),
         contentDescription = stringResource(R.string.loading)
     )
@@ -147,7 +146,7 @@ fun DaftarSiswa(
     onSiswaClick: (DataSiswa) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    LazyColumn(modifier = Modifier) {
+    LazyColumn(modifier = modifier) {
         items(items = itemSiswa, key = { it.id }) { person ->
             ItemSiswa(
                 siswa = person,

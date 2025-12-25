@@ -13,25 +13,27 @@ interface ContainerApp {
     val repositoryDataSiswa: RepositoryDataSiswa
 }
 
-class DefaultContainerApp: ContainerApp {
+class DefaultContainerApp : ContainerApp {
     private val baseurl = "http://10.0.2.2/umyTI/"
 
-    val logging = HttpLoggingInterceptor().apply {
+    // Inisialisasi Json satu kali saja agar lebih cepat dan hemat memori
+    private val json = Json {
+        ignoreUnknownKeys = true
+        prettyPrint = true
+        isLenient = true
+    }
+
+    private val logging = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
-    val klien = OkHttpClient.Builder()
+
+    private val klien = OkHttpClient.Builder()
         .addInterceptor(logging)
         .build()
 
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(baseurl)
-        .addConverterFactory(
-            Json {
-                ignoreUnknownKeys = true
-                prettyPrint = true
-                isLenient = true
-            }.asConverterFactory("application/json".toMediaType())
-        )
+        .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
         .client(klien)
         .build()
 
@@ -45,10 +47,11 @@ class DefaultContainerApp: ContainerApp {
 }
 
 class AplikasiDataSiswa : Application() {
-    lateinit var container: com.example.questapi_128.repositori.ContainerApp
+    // Qualifier nama package sudah dihapus karena berada di package yang sama
+    lateinit var container: ContainerApp
 
     override fun onCreate() {
         super.onCreate()
-        this.container = DefaultContainerApp()
+        container = DefaultContainerApp()
     }
 }

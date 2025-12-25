@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import com.example.questapi_128.modeldata.DetailSiswa
 import com.example.questapi_128.modeldata.UIStateSiswa
 import com.example.questapi_128.modeldata.toDataSiswa
-import com.example.questapi_128.modeldata.toDetailSiswa
 import com.example.questapi_128.repositori.RepositoryDataSiswa
 import retrofit2.Response
 

@@ -25,7 +25,7 @@ sealed interface StatusUIDetail {
 class DetailViewModel(
     savedStateHandle: SavedStateHandle,
     private val repositoryDataSiswa: RepositoryDataSiswa
-) : ViewModel(){
+) : ViewModel() {
 
     private val idSiswa: Int =
         checkNotNull(savedStateHandle[DestinasiDetail.itemIdArg])
@@ -63,3 +63,4 @@ class DetailViewModel(
             println("Gagal Hapus Data : ${resp.errorBody()}")
         }
     }
+}

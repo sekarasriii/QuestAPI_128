@@ -10,7 +10,7 @@ import com.example.questapi_128.uicontroller.route.DestinasiEntry
 import com.example.questapi_128.uicontroller.route.DestinasiHome
 import com.example.questapi_128.uicontroller.route.DestinasiDetail
 import com.example.questapi_128.view.EntrySiswaScreen
-import com.example.api.view.HomeScreen
+import com.example.questapi_128.view.HomeScreen
 
 @Composable
 fun DataSiswaApp(

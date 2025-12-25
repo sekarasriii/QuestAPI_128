@@ -9,7 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.questapi_128.modeldata.DetailSiswa
 import com.example.questapi_128.modeldata.UIStateSiswa
 import com.example.questapi_128.modeldata.toDataSiswa
-import com.example.questapi_128.modeldata.toUiStateSiswa
+import com.example.questapi_128.modeldata.toUIStateSiswa
 import com.example.questapi_128.repositori.RepositoryDataSiswa
 import com.example.questapi_128.uicontroller.route.DestinasiDetail
 import kotlinx.coroutines.launch

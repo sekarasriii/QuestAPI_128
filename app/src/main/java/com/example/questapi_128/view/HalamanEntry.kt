@@ -24,9 +24,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.questapi_128.R
+import com.example.questapi_128.uicontroller.route.DestinasiEntry
 import com.example.questapi_128.modeldata.DetailSiswa
 import com.example.questapi_128.modeldata.UIStateSiswa
-import com.example.questapi_128.uicontroller.route.DestinasiEntry
 import com.example.questapi_128.viewmodel.EntryViewModel
 import com.example.questapi_128.viewmodel.provider.PenyediaViewModel
 import kotlinx.coroutines.launch
@@ -37,13 +37,13 @@ fun EntrySiswaScreen(
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: EntryViewModel = viewModel(factory = PenyediaViewModel.Factory)
-){
+) {
     val coroutineScope = rememberCoroutineScope()
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
-
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
+            // Pastikan SiswaTopAppBar sudah didefinisikan di projectmu
             SiswaTopAppBar(
                 title = stringResource(DestinasiEntry.titleRes),
                 canNavigateBack = true,
@@ -51,8 +51,7 @@ fun EntrySiswaScreen(
                 scrollBehavior = scrollBehavior
             )
         }
-    ){ innerPadding ->
-
+    ) { innerPadding ->
         EntrySiswaBody(
             uiStateSiswa = viewModel.uiStateSiswa,
             onSiswaValueChange = viewModel::updateUiState,
@@ -72,18 +71,14 @@ fun EntrySiswaScreen(
 
 @Composable
 fun EntrySiswaBody(
-    uiStateSiswa: UIStateSiswa,
+    uiStateSiswa: UIStateSiswa, // Menggunakan UIStateSiswa sesuai DataSiswa.kt
     onSiswaValueChange: (DetailSiswa) -> Unit,
     onSaveClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(
-            dimensionResource(id = R.dimen.padding_large)
-        ),
-        modifier = modifier.padding(
-            dimensionResource(id = R.dimen.padding_medium)
-        )
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_large)),
+        modifier = modifier.padding(dimensionResource(id = R.dimen.padding_medium))
     ) {
         FormTambahSiswa(
             detailSiswa = uiStateSiswa.detailSiswa,
@@ -92,7 +87,7 @@ fun EntrySiswaBody(
         )
         Button(
             onClick = onSaveClick,
-            enabled = uiStateSiswa.isEntryValid,
+            enabled = uiStateSiswa.isEntryValid, // Ini sekarang sudah dikenali
             shape = MaterialTheme.shapes.small,
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -107,12 +102,10 @@ fun FormTambahSiswa(
     modifier: Modifier = Modifier,
     onValueChange: (DetailSiswa) -> Unit = {},
     enabled: Boolean = true
-){
+) {
     Column(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(
-            dimensionResource(id = R.dimen.padding_medium)
-        )
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
     ) {
         OutlinedTextField(
             value = detailSiswa.nama,
@@ -122,7 +115,6 @@ fun FormTambahSiswa(
             enabled = enabled,
             singleLine = true
         )
-
         OutlinedTextField(
             value = detailSiswa.alamat,
             onValueChange = { onValueChange(detailSiswa.copy(alamat = it)) },
@@ -131,12 +123,11 @@ fun FormTambahSiswa(
             enabled = enabled,
             singleLine = true
         )
-
         OutlinedTextField(
             value = detailSiswa.telpon,
             onValueChange = { onValueChange(detailSiswa.copy(telpon = it)) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            label = { Text(text = stringResource(R.string.telpon)) },
+            label = { Text(stringResource(R.string.telpon)) },
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
@@ -144,17 +135,12 @@ fun FormTambahSiswa(
         if (enabled) {
             Text(
                 text = stringResource(R.string.required_field),
-                modifier = Modifier.padding(
-                    start = dimensionResource(id = R.dimen.padding_medium)
-                )
+                modifier = Modifier.padding(start = dimensionResource(id = R.dimen.padding_medium))
             )
         }
-
         Divider(
-            thickness = dimensionResource(R.dimen.padding_small),
-            modifier = Modifier.padding(
-                bottom = dimensionResource(id = R.dimen.padding_medium)
-            )
+            thickness = dimensionResource(id = R.dimen.padding_small),
+            modifier = Modifier.padding(bottom = dimensionResource(id = R.dimen.padding_medium))
         )
     }
 }

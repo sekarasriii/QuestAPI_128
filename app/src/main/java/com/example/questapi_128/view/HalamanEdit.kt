@@ -11,6 +11,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.runtime.rememberCoroutineScope
 import kotlinx.coroutines.launch
 import androidx.compose.foundation.layout.padding
+import com.example.questapi_128.uicontroller.route.DestinasiEdit
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -33,7 +34,7 @@ fun EditSiswaScreen(
         val coroutineScope = rememberCoroutineScope()
         EntrySiswaBody(
             uiStateSiswa = viewModel.uiStateSiswa,
-            onSiswaValueChange = viewModel::updateUiState,
+            onSiswaValueChange = viewModel::updateUIState,
             onSaveClick = {
                 coroutineScope.launch {
                     viewModel.editSatuSiswa()
