@@ -43,3 +43,12 @@ class DefaultContainerApp: ContainerApp {
         jaringanRepositoryDataSiswa(retrofitService)
     }
 }
+
+class AplikasiDataSiswa : Application() {
+    lateinit var container: com.example.questapi_128.repositori.ContainerApp
+
+    override fun onCreate() {
+        super.onCreate()
+        this.container = DefaultContainerApp()
+    }
+}
