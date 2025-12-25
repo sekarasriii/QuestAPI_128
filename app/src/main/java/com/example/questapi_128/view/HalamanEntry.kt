@@ -22,9 +22,12 @@ import com.example.questapi_128.uicontroller.route.DestinasiEntry
 import kotlinx.coroutines.launch
 import com.example.questapi_128.modeldata.UIStateSiswa
 import androidx.compose.foundation.R
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.ui.text.input.KeyboardType
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -102,4 +105,38 @@ fun FormTambahSiswa(
     modifier: Modifier = Modifier,
     onValueChange: (DetailSiswa) -> Unit = {},
     enabled: Boolean = true
-){}
+){
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(
+            dimensionResource(id = R.dimen.padding_medium)
+        )
+    ) {
+        OutlinedTextField(
+            value = detailSiswa.nama,
+            onValueChange = { onValueChange(detailSiswa.copy(nama = it)) },
+            label = { Text(stringResource(R.string.nama)) },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true
+        )
+
+        OutlinedTextField(
+            value = detailSiswa.alamat,
+            onValueChange = { onValueChange(detailSiswa.copy(alamat = it)) },
+            label = { Text(stringResource(R.string.alamat)) },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true
+        )
+
+        OutlinedTextField(
+            value = detailSiswa.telpon,
+            onValueChange = { onValueChange(detailSiswa.copy(telpon = it)) },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            label = { Text(text = stringResource(R.string.telpon)) },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true
+        )
+}
