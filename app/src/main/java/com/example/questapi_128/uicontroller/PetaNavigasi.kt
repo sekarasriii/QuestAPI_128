@@ -1,0 +1,32 @@
+package com.example.questapi_128.uicontroller
+
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.questapi_128.uicontroller.route.DestinasiEntry
+import com.example.questapi_128.uicontroller.route.DestinasiHome
+import com.example.questapi_128.uicontroller.route.DestinasiDetail
+import com.example.questapi_128.view.EntrySiswaScreen
+import com.example.questapi_128.view.HomeScreen
+
+@Composable
+fun DataSiswaApp(
+    navController: NavHostController = rememberNavController(),
+    modifier: Modifier
+) {
+    com.example.questapi_128.uicontroller.HostNavigasi(navController = navController)
+}
+
+@Composable
+fun HostNavigasi(
+    navController: NavHostController,
+    modifier: Modifier = Modifier
+) {
+    NavHost(
+        navController = navController,
+        startDestination = DestinasiHome.route,
+        modifier = Modifier
+    ) {}
