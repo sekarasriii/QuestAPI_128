@@ -15,3 +15,6 @@ fun CreationExtras.aplikasiDataSiswa(): AplikasiDataSiswa =
     (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as
             AplikasiDataSiswa
             )
+object PenyediaViewModel {
+
+}
