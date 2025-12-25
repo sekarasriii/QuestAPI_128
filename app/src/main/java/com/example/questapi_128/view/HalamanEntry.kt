@@ -22,6 +22,9 @@ import com.example.questapi_128.uicontroller.route.DestinasiEntry
 import kotlinx.coroutines.launch
 import com.example.questapi_128.modeldata.UIStateSiswa
 import androidx.compose.foundation.R
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -82,3 +85,13 @@ fun EntrySiswaBody(
             onValueChange = onSiswaValueChange,
             modifier = Modifier.fillMaxWidth()
         )
+        Button(
+            onClick = onSaveClick,
+            enabled = uiStateSiswa.isEntryValid,
+            shape = MaterialTheme.shapes.small,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(stringResource(R.string.btn_submit))
+        }
+    }
+}
