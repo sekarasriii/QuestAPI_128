@@ -37,24 +37,14 @@ class EntryViewModel(private val repositoryDataSiswa: RepositoryDataSiswa) :
 
     /* Fungsi untuk menyimpan data yang di-entry */
     suspend fun addSiswa() {
-        if (!validasiInput()) return
-
-        try {
-            val response = repositoryDataSiswa.postDataSiswa(
-                uiStateSiswa.detailSiswa.toDataSiswa()
-            )
-
-            if (response.isSuccessful) {
-                println("✅ Sukses Tambah Data")
-            } else {
-                println("❌ Gagal tambah data: ${response.code()}")
+        if (!validasiInput()) {
+            val sip:Response<Void> =repositoryDataSiswa.postDataSiswa(uiStateSiswa.detailSiswa
+                .toDataSiswa())
+            if (sip.isSuccessful){
+                println("Sukses Tambah Data : ${sip.message()}")
+            }else{
+                println("Gagal Tambah Data : ${sip.errorBody()}")
             }
-
-        } catch (e: Exception) {
-            e.printStackTrace()
-            println("🔥 ERROR addSiswa: ${e.message}")
         }
     }
-
-
 }
